@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aether OS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Загрузочный экран -->
+  <div id="boot" class="screen">
+    <div class="boot-logo">Aether</div>
+    <div class="boot-bar"><div id="boot-fill"></div></div>
+    <div id="boot-status" class="boot-status">Запуск…</div>
+  </div>
+
+  <!-- Экран входа -->
+  <div id="login" class="screen hidden">
+    <div class="login-card glass">
+      <div id="login-avatar" class="avatar big">A</div>
+      <div id="login-name" class="login-name">Пользователь</div>
+      <input id="login-pass" class="input" type="password" placeholder="Пароль (можно пустой)" autocomplete="off">
+      <button id="login-btn" class="btn primary">Войти</button>
+      <div id="login-err" class="login-err"></div>
+    </div>
+  </div>
+
+  <!-- Рабочий стол -->
+  <div id="os" class="hidden">
+    <div id="wallpaper"></div>
+    <div id="night-overlay"></div>
+    <div id="dim-overlay"></div>
+
+    <div id="desktop" tabindex="-1">
+      <div id="icons"></div>
+      <div id="windows"></div>
+    </div>
+
+    <!-- Меню «Пуск» -->
+    <div id="start" class="flyout glass hidden">
+      <input id="start-search" class="input" placeholder="Поиск приложений и файлов">
+      <div id="start-grid" class="start-grid"></div>
+      <div id="start-results" class="start-results hidden"></div>
+      <div class="start-foot">
+        <button class="btn ghost" id="start-settings">Настройки</button>
+        <button class="btn ghost" id="start-lock">Заблокировать</button>
+        <button class="btn ghost" id="start-off">Выключить</button>
+      </div>
+    </div>
+
+    <!-- Панель задач -->
+    <div id="taskbar" class="glass">
+      <div class="tb-left">
+        <button id="start-btn" class="tb-btn start" title="Пуск"></button>
+        <div id="tb-apps"></div>
+      </div>
+      <div class="tb-right">
+        <button id="coin-pill" class="coin-pill" title="Баланс коинов"></button>
+        <button id="tray" class="tray" title="Быстрые настройки и уведомления">
+          <span id="tray-wifi"></span><span id="tray-vol"></span><span id="tray-bat"></span>
+        </button>
+        <button id="clock" class="clock" title="Календарь и уведомления">
+          <span id="clock-time"></span>
+          <span id="clock-date"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Выезжающая панель -->
+    <aside id="panel" class="panel glass hidden">
+      <section class="p-section">
+        <div class="cal-head">
+          <button class="icon-btn" id="cal-prev" aria-label="Назад"></button>
+          <div id="cal-title"></div>
+          <button class="icon-btn" id="cal-next" aria-label="Вперёд"></button>
+        </div>
+        <div id="cal-grid" class="cal-grid"></div>
+      </section>
+
+      <section class="p-section">
+        <div class="quick-grid" id="quick-grid"></div>
+      </section>
+
+      <section class="p-section">
+        <label class="slider-row"><span id="lbl-vol"></span><input id="vol-slider" type="range" min="0" max="100"></label>
+        <label class="slider-row"><span id="lbl-bri"></span><input id="bri-slider" type="range" min="30" max="100"></label>
+      </section>
+
+      <section class="p-section">
+        <div class="p-head">
+          <span id="lbl-notifs"></span>
+          <button class="link-btn" id="notif-clear"></button>
+        </div>
+        <div id="notif-list" class="notif-list"></div>
+      </section>
+    </aside>
+
+    <div id="ctx" class="flyout glass hidden"></div>
+    <div id="toasts"></div>
+    <div id="dialog-overlay" class="overlay hidden">
+      <div class="dialog glass">
+        <div id="dialog-title" class="dialog-title"></div>
+        <div id="dialog-text" class="dialog-text"></div>
+        <div class="dialog-btns">
+          <button id="dialog-no" class="btn ghost"></button>
+          <button id="dialog-yes" class="btn primary"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="shutdown" class="screen hidden"><div class="boot-logo">Выключение…</div></div>
+
+  <script src="js/core.js"></script>
+  <script src="js/apps.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/games.js"></script>
+  <script src="js/ai_studio.js"></script>
+  <script>startBoot();</script>
+</body>
+</html>
